@@ -223,6 +223,7 @@
             color: #666;
             padding: 0 1rem;
             position: relative;
+            text-align: justify;
             transition: all 0.3s ease;
         }
 
@@ -236,6 +237,58 @@
             margin-bottom: 2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
+            .footer {
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 3rem;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        animation: fadeInUp 1s ease-in;
+    }
+
+    .footer p {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    .footer p:hover {
+        opacity: 1;
+    }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px dotted #fff;
+        transition: all 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #23d5ab;
+        border-bottom-color: #23d5ab;
+    }
+
+    /* 特定图片的样式 */
+    .special-image {
+        max-width: 1000px !important; /* 增加容器宽度 */
+    }
+
+    .special-image .image {
+        max-width: 800px !important; /* 增加图片宽度 */
+        max-height: 600px !important; /* 增加图片高度 */
+    }
+
+    .special-image .image-description {
+        text-align: justify; /* 文字左对齐 */
+        padding: 1rem 2rem; /* 调整文字边距 */
+        line-height: 1.8; /* 增加行间距 */
+    }
+
+
 
         @media (max-width: 768px) {
             .video-container {
@@ -317,7 +370,7 @@
                     the framework globally and dynamically calibrates the feature extraction process through spatiotemporal consistency loss and multi-signal self-supervision, progressively distilling more refined spatiotemporal representations.</p>
             </div>
 
-            <div class="image-item scroll-animate">
+            <div class="image-item scroll-animate special-image">  <!-- 添加 special-image 类 -->
                 <h3 class="image-title">Visual comparison with other SOTA networks</h3>
                 <img class="image" src="fig/fig4.png" alt="图片3描述">
                 <p class="image-description">The visual comparison highlights several common shortcomings of existing approaches in video reconstruction quality. 
@@ -328,6 +381,12 @@
                     yielding a more natural and visually faithful result.</p>
             </div>
         </div>
+                <footer class="footer">
+            <p>© 2025 YuChen Bai. All Rights Reserved.</p>
+            <p>School of Instrument Science and Opto-electronics Engineering, Hefei University of Technology</p>
+            <p>Last updated: 2025/5/29<span id="lastUpdate"></span></p>
+            <p>Contact: <a href="2022030003@mail.hfut.edu.cn">2022030003@mail.hfut.edu.cn</a></p>
+        </footer>
     </div>
 
     <script>
