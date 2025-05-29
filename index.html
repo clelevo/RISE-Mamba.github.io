@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE-MAMBA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            animation: fadeInDown 1s ease-in;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            background: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .title:hover::after {
+            width: 100%;
+        }
+
+        .authors {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .affiliation {
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        .abstract {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .abstract:hover {
+            transform: perspective(1000px) rotateX(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .videos-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-in;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 1rem;
+            perspective: 1000px;
+        }
+
+        .video-item {
+            flex: 1;
+            text-align: center;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-title {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        .video-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background: #2c3e50;
+            transition: width 0.3s ease;
+        }
+
+        .video-item:hover .video-title::after {
+            width: 100%;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .images-section {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            animation: fadeInUp 1s ease-in;
+        }
+
+        .image-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            max-width: 800px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+        }
+
+        .image-item:hover {
+            transform: scale(1.02) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .image-title {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background: #2c3e50;
+            transition: width 0.3s ease;
+        }
+
+        .image-item:hover .image-title::after {
+            width: 100%;
+        }
+
+        .image {
+            max-width: 600px;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-description {
+            color: #666;
+            padding: 0 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover .image-description {
+            color: #333;
+        }
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* 添加滚动显示动画 */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 第一张图片 -->
+        <div class="image-item scroll-animate">
+            <h3 class="image-title"></h3>
+            <img class="image" src="fig/fig1.png" alt="图片1描述">
+            <p class="image-description"></p>
+        </div>
+
+        <div class="header">
+            <h1 class="title">RISE-Mamba: Real-Time Infrared Denoising Mamba with Progressive Self-Distillation</h1>
+            <div class="authors">Yuchen Bai, Mingxing Yu*,  Mingli Dong, Lianqing Zhu*</div>
+            <div class="affiliation">School of Instrument Science and Opto-electronics Engineering, Hefei University of Technology, Hefei 230009, China
+                <br>Key Laboratory of the Ministry of Education for Optoelectronic Measurement Technology and Instrument, Beijing Information Science and Technology University, Beijing 100016, China
+                <br>Guangzhou Nansha Intelligent Photonic Sensing Research Institute, Guangzhou 511400, China</div>
+        </div>
+
+        <div class="abstract scroll-animate">
+            <h2>Abstract</h2>
+            <p>Infrared detection technology, owing to its exceptional ability to perceive thermal radiation, 
+                has been widely applied in fields such as assisted driving, intelligent security, and medical diagnostics. However, 
+                infrared images are often plagued by severe noise contamination. Suppressing noise at the hardware level typically incurs high costs and encounters technical bottlenecks. 
+                To address this, this paper proposes a global-local spatio-temporal representation infrared video denoising network based on a progressive self-distillation training strategy. 
+                At the training strategy level, we introduce a spatio-temporal progressive self-distillation approach. This method constructs complementary multi-level supervision signals by leveraging features extracted from deep networks and ground-truth labels. 
+                Without requiring an additional teacher network, it dynamically enhances feature extraction capabilities across spatial and temporal dimensions. Through a progressive distillation process, 
+                the model refines its features step by step, achieving synergistic optimization of cross-frame motion information correlation and single-frame local detail reconstruction. 
+                In terms of network architecture, a dual Mamba structure is employed for modeling: the Global Mamba focuses on intra-frame spatial features, while the Hilbert-Mamba efficiently captures inter-frame local spatio-temporal features. 
+                Experimental results demonstrate that our method achieves a peak signal-to-noise ratio (PSNR) of 33.64 dB with an inference latency of only 9.47 ms. Compared to the state-of-the-art method, MDIVD, 
+                our approach improves PSNR by 1.02 dB while maintaining lower inference latency. These results fully validate the superiority of our method in both performance and efficiency, offering an effective solution for video denoising.</p>
+        </div>
+
+        <div class="videos-section scroll-animate">
+            <h2>实验视频</h2>
+            <div class="video-container">
+                <div class="video-item">
+                    <h3 class="video-title">视频1标题</h3>
+                    <video class="video-frame" controls>
+                        <source src="./fig/DN_Video.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-item">
+                    <h3 class="video-title">视频2标题</h3>
+                    <video class="video-frame" controls>
+                        <source src="./fig/N_Video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="images-section">
+            <div class="image-item scroll-animate">
+                <h3 class="image-title">Progressive Self-distillation training framework</h3>
+                <img class="image" src="fig/fig2.png" alt="图片2描述">
+                <p class="image-description">By taking multi-level features from the deeper layers of the network along with ground truth labels as supervisory signals, 
+                    the framework globally and dynamically calibrates the feature extraction process through spatiotemporal consistency loss and multi-signal self-supervision, progressively distilling more refined spatiotemporal representations.</p>
+            </div>
+
+            <div class="image-item scroll-animate">
+                <h3 class="image-title">Visual comparison with other SOTA networks</h3>
+                <img class="image" src="fig/fig4.png" alt="图片3描述">
+                <p class="image-description">The visual comparison highlights several common shortcomings of existing approaches in video reconstruction quality. 
+                    PaCNet’s outputs suffer from pronounced over-smoothing, indicating a lack of high-frequency detail preservation. 
+                    BSVD achieves reasonable overall noise suppression but leaves noticeable residual noise along edges, reflecting its limited edge-feature extraction capability. Basic VSR++, MMNet, 
+                    and FloRNN each introduce characteristic artifacts, underscoring deficiencies in their temporal feature alignment and fusion. In contrast, 
+                    our method—leveraging a carefully designed spatio-temporal feature extraction architecture and training strategy—delivers superior reconstructions: it effectively suppresses ghosting and other temporal artifacts while retaining rich texture details, 
+                    yielding a more natural and visually faithful result.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动显示动画
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight * 0.9) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
