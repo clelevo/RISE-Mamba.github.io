@@ -366,7 +366,7 @@
         </div>
 
         <div class="header">
-            <h1 class="title">RISE-Mamba: Real-Time Infrared Denoising Mamba with Progressive Self-Distillation</h1>
+            <h1 class="title">RTDM: Real-Time Denoising Mamba with Progressive</h1>
             <div class="authors">Yuchen Bai, Mingxin Yu*, Weiqiang Chen, Lidan Lu, Xiaoping Lou, Yanlin He, Mingli Dong*, Lianqing Zhu*</div>
             <div class="affiliation">School of Instrument Science and Opto-electronics Engineering, Hefei University of Technology, Hefei 230009, China
                 <br>Key Laboratory of the Ministry of Education for Optoelectronic Measurement Technology and Instrument, Beijing Information Science and Technology University, Beijing 100016, China
@@ -380,16 +380,7 @@
         <div class="abstract scroll-animate">
 		
             <h2>Abstract</h2>
-            <p>Infrared detection technology, owing to its exceptional ability to perceive thermal radiation, 
-                has been widely applied in fields such as assisted driving, intelligent security, and medical diagnostics. However, 
-                infrared images are often plagued by severe noise contamination. Suppressing noise at the hardware level typically incurs high costs and encounters technical bottlenecks. 
-                To address this, this paper proposes a global-local spatio-temporal representation infrared video denoising network based on a progressive self-distillation training strategy. 
-                At the training strategy level, we introduce a spatio-temporal progressive self-distillation approach. This method constructs complementary multi-level supervision signals by leveraging features extracted from deep networks and ground-truth labels. 
-                Without requiring an additional teacher network, it dynamically enhances feature extraction capabilities across spatial and temporal dimensions. Through a progressive distillation process, 
-                the model refines its features step by step, achieving synergistic optimization of cross-frame motion information correlation and single-frame local detail reconstruction. 
-                In terms of network architecture, a dual Mamba structure is employed for modeling: the Global Mamba focuses on intra-frame spatial features, while the Hilbert-Mamba efficiently captures inter-frame local spatio-temporal features. 
-                Experimental results demonstrate that our method achieves a peak signal-to-noise ratio (PSNR) of 33.64 dB with an inference latency of only 9.47 ms. Compared to the state-of-the-art method, MDIVD, 
-                our approach improves PSNR by 1.02 dB while maintaining lower inference latency. These results fully validate the superiority of our method in both performance and efficiency, offering an effective solution for video denoising.</p>
+            <p>Real-time video denoising requires both high-fidelity recovery of fine spatial details and strong temporal coherence. However, existing methods have difficulty balancing reconstruction quality with computational efficiency. To address this challenge, RTDM is introduced as a novel framework that achieves state-of-the-art denoising performance while maintaining real-time inference capability. RTDM is designed by integrating three key components. First, a dual-path Mamba architecture is developed to decouple global spatial modeling from local spatio-temporal processing. The Global Mamba branch enables parallel sequence modeling with linear computational complexity, while the Hilbert-curve-scanned Mamba branch preserves local motion cues at minimal computational cost. Second, a progressive self-distillation strategy is adopted, where multi-level supervision is imposed using intermediate features and ground-truth signals through a spatio-temporal consistency loss. This strategy removes the need for external teacher networks, thereby avoiding additional parameters and computational overhead during both training and inference. Third, a bidirectional gated temporal fusion (Bi-GTFF) module is introduced to adaptively reweight cross-frame information via a learnable gating mechanism, which effectively suppresses temporal redundancy and ghosting artifacts. Extensive experiments conducted on a challenging benchmark with complex multi-source noise demonstrate that RTDM achieves 33.64 dB PSNR, outperforming the previous state of the art by 1.02 dB, while maintaining an ultra-low inference latency of 9.47 ms per frame. This simultaneous improvement in denoising quality and inference speed establishes a new performance benchmark for real-time video denoising and validates the effectiveness of the proposed design.</p>
         </div>
 
         <div class="videos-section scroll-animate">
